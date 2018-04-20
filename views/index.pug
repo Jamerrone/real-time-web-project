@@ -1,0 +1,20 @@
+html
+  head
+    title Document
+    link(rel="stylesheet", href="./styles/index.css")
+  body
+    form(method="get")
+      label From
+        input(type="text" list="fromStationList" name="from" placeholder="Amsterdam Centraal" required)
+        datalist#fromStationList
+          each station in stationsData
+            option(value=station)
+      label To
+        input(type="text" list="toStationList" name="to" placeholder="Rotterdam Stadion" required)
+        datalist#toStationList
+          each station in stationsData
+            option(value=station)
+      button(type="submit") Submit
+    //- pre= JSON.stringify(routeData, null, 2)
+    script(src="/socket.io/socket.io.js")
+    script(src="./scripts/index.js")

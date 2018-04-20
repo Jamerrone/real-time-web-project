@@ -1,0 +1,26 @@
+{
+  "name": "real-time-web-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": "https://github.com/Jamerrone/real-time-web-project",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": "https://github.com/Jamerrone/real-time-web-project/issues",
+  "homepage": "https://github.com/Jamerrone/real-time-web-project#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "ns-api": "^2.0.8",
+    "pug": "^2.0.3",
+    "socket.io": "^2.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-config-google": "^0.9.1"
+  }
+}
