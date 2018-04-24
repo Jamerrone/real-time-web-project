@@ -59,6 +59,7 @@ section form {
   display: flex;
   flex-direction: column;
   margin-bottom: 5rem;
+  position: relative;
 }
 
 section form input,
@@ -66,4 +67,21 @@ section form button {
   display: block;
   margin-bottom: 1rem;
   width: 100%;
+}
+
+#errorMessage {
+  background: #f44336;
+  color: #fff;
+  display: none;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.6rem;
+  margin-bottom: 2rem;
+  padding: 1.25rem;
+  text-align: center;
+  width: 100%;
+}
+
+#errorMessage.show {
+  display: block;
 }

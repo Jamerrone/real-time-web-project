@@ -6,6 +6,8 @@
   const messageTrainIDInput = document.getElementById('messageTrainIDInput');
   const messageBodyInput = document.getElementById('messageBodyInput');
   const messagesList = document.getElementById('messagesList');
+  const errorMessage = document.getElementById('errorMessage');
+  const allForms = document.querySelectorAll('form');
 
   messageForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -43,9 +45,24 @@
     messagesList.appendChild(li);
   });
 
-  document.addEventListener('DOMContentLoaded', function() {
+  socket.on('connect_error', function() {
+    errorMessage.innerHTML =
+      'Oops! It seems our servers are currently unavailable. For the latest ' +
+      'up to date information please visit ns.nl';
+    errorMessage.classList.add('show');
+    allForms.forEach((form) => {
+      form.style.display = 'none';
+    });
+  });
+
+  socket.on('connect', function() {
+    errorMessage.innerHTML = '';
+    errorMessage.classList.remove('show');
     socket.emit('joinRoute', {
       routeID: messageForm.dataset.routeid,
+    });
+    allForms.forEach((form) => {
+      form.style.display = 'block';
     });
   });
 }

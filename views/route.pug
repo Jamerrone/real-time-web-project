@@ -3,14 +3,15 @@ html
     title Document
     link(rel="stylesheet", href="./styles/index.css")
   body
+    p#errorMessage
     form(method="get")
       label From
-        input(type="text" list="fromStationList" name="from" placeholder="Amsterdam Centraal" required)
+        input(type="text" list="fromStationList" name="from" placeholder="Amsterdam Centraal")
         datalist#fromStationList
           each station in stationsData
             option(value=station)
       label To
-        input(type="text" list="toStationList" name="to" placeholder="Rotterdam Stadion" required)
+        input(type="text" list="toStationList" name="to" placeholder="Rotterdam Stadion")
         datalist#toStationList
           each station in stationsData
             option(value=station)
@@ -49,6 +50,5 @@ html
               p Category: #{msg.category}
               p Train ID: #{msg.trainID}
               p Message: #{msg.body}
-    //- pre= JSON.stringify(routeData, null, 2)
     script(src="/socket.io/socket.io.js")
     script(src="./scripts/index.js")

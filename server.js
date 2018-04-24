@@ -40,22 +40,9 @@ function generateRouteID(departure, arrival, routePart) {
   return `${departure}${trainsID}-${arrival}`;
 }
 
-function generateTrainIDFromRouteID(routeID) {
-  const trainsID = [];
-  const splittedRouteID = routeID.split('-');
-  const departure = splittedRouteID.shift();
-  const arrival = splittedRouteID.pop();
-
-  splittedRouteID.forEach((trainID) => {
-    trainsID.push(`${departure}${trainID}${arrival}`);
-  });
-
-  return trainsID;
-}
-
 ns.stations((err, stationsData) => {
   if (err) {
-    next(err);
+    return false;
   } else {
     getAllStationNames(stationsData);
   }
@@ -73,15 +60,17 @@ app.get('/', (req, res, next) => {
     };
     ns.reisadvies(params, (err, routeData) => {
       if (err) {
-        next(err);
+        res.render('index', {
+          errorMessage:
+            'Our source API is current unacceseble. For the latest up to date' +
+            ' information please visit ns.nl',
+        });
       } else {
         const routeID = generateRouteID(
           routeData[0].ActueleVertrekTijd,
           routeData[0].ActueleAankomstTijd,
           routeData[0].ReisDeel
         );
-
-        console.log(generateTrainIDFromRouteID(routeID));
 
         if (!MESSAGES_DATABASE[routeID]) {
           MESSAGES_DATABASE[routeID] = [];
@@ -103,7 +92,10 @@ app.get('/', (req, res, next) => {
 io.on('connection', (socket) => {
   socket.on('joinRoute', (data) => {
     socket.routeID = data.routeID;
-    socket.join(data.routeID);
+    socket.join(socket.routeID);
+    if (!MESSAGES_DATABASE[socket.routeID]) {
+      MESSAGES_DATABASE[socket.routeID] = [];
+    }
   });
   socket.on('postNewMessage', (data) => {
     MESSAGES_DATABASE[socket.routeID].push({
@@ -124,9 +116,5 @@ io.on('connection', (socket) => {
     });
   });
 });
-
-// setInterval(() => {
-//   console.log(messages);
-// }, 60000);
 
 http.listen(3000, () => console.log('http://localhost:3000'));
