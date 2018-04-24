@@ -35,13 +35,13 @@ html
       section
         form#messageForm(data-routeid=routeID)
           label Title
-            input#messageTitleInput(type="text")
+            input#messageTitleInput(type="text" placeholder="5 Min Delay")
           label Category
-            input#messageCategoryInput(type="text")
+            input#messageCategoryInput(type="text" placeholder="Delay")
           label Train ID
-            input#messageTrainIDInput(type="text")
+            input#messageTrainIDInput(type="text" placeholder="14650")
           label Message
-            input#messageBodyInput(type="text")
+            input#messageBodyInput(type="text" placeholder="NS just updated their departure time.")
           button#postNewMessage(type="submit") Submit
         ul#messagesList
           each msg in messages
@@ -50,5 +50,6 @@ html
               p Category: #{msg.category}
               p Train ID: #{msg.trainID}
               p Message: #{msg.body}
+              p Timestamp: #{msg.timestamp}
     script(src="/socket.io/socket.io.js")
     script(src="./scripts/index.js")

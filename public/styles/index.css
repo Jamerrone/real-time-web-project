@@ -4,9 +4,40 @@
   padding: 0;
 }
 
+input,
+button {
+  border: 1px solid #003082;
+  padding: 0.5rem;
+}
+
+label,
+button {
+  cursor: pointer;
+}
+
+button {
+  background-color: #003082;
+  color: #fff;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
 body > form {
   text-align: center;
   padding: 3rem 0;
+}
+
+body > form label {
+  margin-right: 1rem;
+}
+
+body > form input {
+  margin-left: 0.5rem;
+}
+
+body > form button {
+  border-radius: 0;
+  padding: 0.5rem 2rem;
 }
 
 table {
@@ -14,7 +45,7 @@ table {
   color: #003082;
   margin: 0 auto 2rem;
   text-align: center;
-  width: 75%;
+  width: 65%;
 }
 
 td,
@@ -28,12 +59,7 @@ tr:hover {
 }
 
 th {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 201, 23, 0.9) 0,
-    #ffc917 3.75rem,
-    #ffc917
-  );
+  background: #ffc917;
   color: #003082;
   padding: 0.5rem 0;
 }
@@ -47,7 +73,7 @@ main {
 
 section {
   padding: 0 2rem;
-  width: 25%;
+  width: 35%;
 }
 
 section li {
@@ -58,8 +84,12 @@ section li {
 section form {
   display: flex;
   flex-direction: column;
-  margin-bottom: 5rem;
+  margin-bottom: 2.5rem;
   position: relative;
+}
+
+section form input {
+  margin-top: 0.5rem;
 }
 
 section form input,
@@ -69,9 +99,23 @@ section form button {
   width: 100%;
 }
 
+#messagesList li {
+  background-color: #eee;
+  padding: 1rem;
+}
+
+#messagesList li p {
+  margin-bottom: 0.25rem;
+}
+
+#messagesList li p:first-word {
+  font-weight: bold;
+}
+
 #errorMessage {
-  background: #f44336;
-  color: #fff;
+  background: #ffc917;
+  border-bottom: 2px solid #003082;
+  color: #003082;
   display: none;
   font-size: 18px;
   font-weight: bold;

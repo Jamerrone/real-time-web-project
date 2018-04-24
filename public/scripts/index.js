@@ -9,6 +9,15 @@
   const errorMessage = document.getElementById('errorMessage');
   const allForms = document.querySelectorAll('form');
 
+  function getCurrentISOTime() {
+    const tzOffset = new Date().getTimezoneOffset() * 60000;
+    const localISOTime = new Date(Date.now() - tzOffset)
+      .toISOString()
+      .slice(0, -1);
+
+    return localISOTime;
+  }
+
   messageForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -17,6 +26,7 @@
       messageCategory: messageCategoryInput.value,
       messageTrainID: messageTrainIDInput.value,
       messageBody: messageBodyInput.value,
+      messageTimestamp: getCurrentISOTime(),
     });
 
     messageTitleInput.value = '';
@@ -31,16 +41,19 @@
     const messageCategory = document.createElement('p');
     const messageTrainID = document.createElement('p');
     const messageBody = document.createElement('p');
+    const messageTimestamp = document.createElement('p');
 
     messageTitle.innerHTML = `Title: ${data.title}`;
     messageCategory.innerHTML = `Category: ${data.category}`;
     messageTrainID.innerHTML = `Train ID: ${data.trainID}`;
     messageBody.innerHTML = `Message: ${data.body}`;
+    messageTimestamp.innerHTML = `Timestamp: ${data.timestamp}`;
 
     li.appendChild(messageTitle);
     li.appendChild(messageCategory);
     li.appendChild(messageTrainID);
     li.appendChild(messageBody);
+    li.appendChild(messageTimestamp);
 
     messagesList.appendChild(li);
   });

@@ -103,6 +103,7 @@ io.on('connection', (socket) => {
       category: data.messageCategory,
       trainID: data.messageTrainID,
       body: data.messageBody,
+      timestamp: data.messageTimestamp,
     });
     const latestMessage =
       MESSAGES_DATABASE[socket.routeID][
@@ -113,6 +114,7 @@ io.on('connection', (socket) => {
       category: latestMessage.category,
       trainID: latestMessage.trainID,
       body: latestMessage.body,
+      timestamp: latestMessage.timestamp,
     });
   });
 });
