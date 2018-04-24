@@ -231,8 +231,6 @@ socket.on("postNewMessage", data => {
 
 * **James Peter Perrone Jefferies** - _Initial work_
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
 ## License
 
 This project is licensed under the MIT License
