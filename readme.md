@@ -167,7 +167,7 @@ const MESSAGES_DATABASE = {
 
 The only information the client stores is his own unique route ID that is generated based on his departure and arrival. Such ID may look something like this: `201804251300-4528-5789-450-201804251337`. It probably looks really complicated sp let's break it down.
 
-**201804251300** Stands for the departure time: 25/04/2018 on 13:00 PM
+**201804251300** Stands for the departure time: 25/04/2018 on 13:00 PM <br>
 **201804251337** Stands for the arrival time: 25/04/2018 on 13:37 PM
 
 The other values (4528, 5789 & 450) represents each train inside the given route. This ID is used throughout the application in order to verify users and to broadcast the right messages to the right users.
