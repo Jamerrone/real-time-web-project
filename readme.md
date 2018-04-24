@@ -22,6 +22,8 @@ Live deployed demo can be found [here](https://real-time-web-project-pgnkawrqjc.
 
 <!-- /TOC -->
 
+![Cover Image](./cover.png)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
